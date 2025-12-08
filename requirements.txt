@@ -1,23 +1,4 @@
-# core langchain pieces (loose versions to avoid conflicts)
-#langchain>=0.1.17
-
-# langchain community pieces used by some loaders/embeddings
- # langchain-community>=0.0.33
-#langchain-text-splitters>=0.0.1
-#langchain-pinecone>=0.0.3
-
-# embeddings
-#sentence-transformers>=2.2.2
-
-# Pinecone client (pick a 2.x release to avoid the grpc Windows issue)
-#pinecone-client==2.2.0
-
-# utilities
-#python-dotenv>=1.0.1
-#tqdm>=4.0.0
-pypdf>=3.0.0
-
-# requirements.txt (recommended starting point)
+# requirements.txt 
 langchain
 langchain-core
 langchain-community
