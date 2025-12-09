@@ -1,3 +1,4 @@
+#
 # from flask import Flask, request, jsonify, render_template
 # import os
 # from dotenv import load_dotenv
@@ -29,8 +30,8 @@
 # embeddings = download_hugging_face_embeddings()
 #
 # # ----------------- HuggingFace model setup -----------------
-# # GPT-2 is small and free; swap with Falcon/LLaMA for stronger responses
-# hf_model = pipeline("text-generation", model="gpt2")
+# # ✅ Flan-T5 is instruction-tuned, better for Q&A
+# hf_model = pipeline("text2text-generation", model="google/flan-t5-large")
 #
 # # ----------------- Routes -----------------
 #
@@ -50,6 +51,7 @@
 #     # ✅ Casual conversation shortcuts
 #     casual_responses = {
 #         "hi": "Hello! How can I help you today?",
+#         "hy": "How can I help you today?",
 #         "hello": "Hello! How can I help you today?",
 #         "hey": "Hey there! How can I assist you?",
 #         "thanks": "You're welcome! Happy to help.",
@@ -74,8 +76,8 @@
 #     docs = get_top_k_docs(q, k=5)
 #     prompt = build_prompt(q, docs)
 #
-#     response = hf_model(prompt, max_length=200, num_return_sequences=1)
-#     answer = response[0]["generated_text"]
+#     response = hf_model(prompt, max_length=200)
+#     answer = response[0]["generated_text"].strip()
 #
 #     return jsonify({"answer": answer, "retrieved": docs})
 #
@@ -110,7 +112,6 @@
 #
 # if __name__ == "__main__":
 #     app.run(host="0.0.0.0", port=5000, debug=True)
-
 
 
 
