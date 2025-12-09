@@ -1,3 +1,4 @@
+
 #
 # from flask import Flask, request, jsonify, render_template
 # import os
@@ -128,6 +129,7 @@
 
 
 
+
 from flask import Flask, request, jsonify, render_template
 import os
 from dotenv import load_dotenv
@@ -159,7 +161,7 @@ index = pc.Index("medical-chatbot")
 embeddings = download_hugging_face_embeddings()
 
 # ----------------- HuggingFace model setup -----------------
-# ✅ Flan-T5 is instruction-tuned, better for Q&A
+#  Flan-T5 is instruction-tuned, better for Q&A
 hf_model = pipeline("text2text-generation", model="google/flan-t5-large")
 
 # ----------------- Routes -----------------
@@ -177,7 +179,7 @@ def query_endpoint():
 
     user_input = q.lower().strip()
 
-    # ✅ Casual conversation shortcuts
+    #   shortcuts conversation
     casual_responses = {
         "hi": "Hello! How can I help you today?",
         "hy": "How can I help you today?",
@@ -193,11 +195,11 @@ def query_endpoint():
     if user_input in casual_responses:
         return jsonify({"answer": casual_responses[user_input], "retrieved": []})
 
-    # ✅ Fallback for slang greetings
+    #  Fallback for slang greetings
     if any(word in user_input for word in ["yo", "sup", "what's up", "wassup", "bro"]):
         return jsonify({"answer": "Hey! I’m here — how can I help you today?", "retrieved": []})
 
-    # ✅ General fallback for non-medical casual inputs
+    # General fallback for non-medical casual inputs
     if len(user_input.split()) <= 2 and not any(char.isalpha() for char in user_input):
         return jsonify({"answer": "I didn’t quite get that — could you rephrase?", "retrieved": []})
 
