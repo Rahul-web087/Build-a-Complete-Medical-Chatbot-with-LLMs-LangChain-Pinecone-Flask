@@ -7,7 +7,7 @@ langchain-core
 langchain-community
 langchain-text-splitters
 langchain-pinecone==0.2.13
-pinecone-client>=3.2.2
+pinecone>=8.0.0
 pypdf
 sentence-transformers
 chromadb
